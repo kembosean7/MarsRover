@@ -11,19 +11,24 @@ public class InstructionHandler {
         System.out.printf("I'm at (%.2f, %.2f) facing %.2f degrees%n", x, y, orientation);
 
 
+
     }
     private static double[] moveCommand(int i, double orientation, String instruction, double x, double y){
 
         String[] moveCommand = instruction.split(" ");
+        double distance = 0;
         try {
-            double distance = Double.parseDouble(moveCommand[1]);
-            distance = Math.round(distance * 100.0) / 100.0;
+              distance = Double.parseDouble(moveCommand[1]);
+//            distance = Math.round(distance * 100.0) / 100.0;
         }
         catch (IndexOutOfBoundsException | NumberFormatException e){
-            System.out.printf("I've encountered an instruction I don't understand, aborting instruction %d", i);
+            System.out.printf("I've encountered an instruction I don't understand, aborting (instruction %d)%n", i);
             return new double[] {x,y};
         }
 
+        if(moveCommand[-1].equalsIgnoreCase("forward")){
+            x += distance * Math.sin(Math.toRadians(orientation));
+            y += x += distance * Math.cos(Math.toRadians(orientation));
 
-    }
+        }
 }
