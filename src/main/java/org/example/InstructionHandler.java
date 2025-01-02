@@ -30,5 +30,10 @@ public class InstructionHandler {
             x += distance * Math.sin(Math.toRadians(orientation));
             y += x += distance * Math.cos(Math.toRadians(orientation));
 
+        } else if(moveCommand[-1].equalsIgnoreCase("backward")) {
+            x -= distance * Math.sin(Math.toRadians(orientation));
+            y -= x += distance * Math.cos(Math.toRadians(orientation));
         }
+
+    }
 }
