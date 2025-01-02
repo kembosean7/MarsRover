@@ -36,6 +36,7 @@ public class InstructionHandler {
         }
         catch (IndexOutOfBoundsException | NumberFormatException e){
             System.out.printf("I've encountered an instruction I don't understand, aborting (instruction %d)%n", i+1);
+            System.exit(0);
             return new double[] {x,y};
         }
 
@@ -78,6 +79,7 @@ public class InstructionHandler {
 
         }else {
             System.out.printf("I've encountered an instruction I don't understand, aborting (instruction %d)%n", i+1);
+            System.exit(0);
         }
 
         System.out.printf("Turning %.2f degrees %s (instruction %d)%n", angle, turnDirection, i);
