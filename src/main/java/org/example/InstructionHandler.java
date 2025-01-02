@@ -76,6 +76,12 @@ public class InstructionHandler {
         } else if (turnDirection.equalsIgnoreCase("counterclockwise")) {
             orientation = (orientation + angle) % 360;
 
+        }else {
+            System.out.printf("I've encountered an instruction I don't understand, aborting (instruction %d)%n", i+1);
+        }
 
+        System.out.printf("Turning %.2f degrees %s (instruction %d)%n", angle, turnDirection, i);
+        System.out.printf("I'm at (%.2f, %.2f) facing %.2f degrees%n", x, y, orientation);
+        return orientation;
     }
 }
