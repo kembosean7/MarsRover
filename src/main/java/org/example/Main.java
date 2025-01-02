@@ -12,6 +12,7 @@ public class Main {
 
         readFile readFile = new readFile();
         List<String> data =readFile.getInstructions("instructions.txt");
-        InstructionHandler.instructionMovements(data);
+//        InstructionHandler.instructionMovements(data);
+        System.out.println(data);
     }
 }
