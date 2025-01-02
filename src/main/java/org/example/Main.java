@@ -2,6 +2,7 @@ package org.example;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -10,6 +11,7 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
 
         readFile readFile = new readFile();
-        System.out.println(readFile.getInstructions("instructions.txt"));
+        List<String> data =readFile.getInstructions("instructions.txt");
+        InstructionHandler.instructionMovements(data);
     }
 }
