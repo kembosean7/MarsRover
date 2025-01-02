@@ -21,9 +21,18 @@ public class testMarsRover {
                 "Turn 90 degrees counterclockwise",
                 "Move 10 meters forward");
 
-
         assertEquals(expectedOutput,output);
 
+    }
+
+    @Test
+    public void testReadInvalidFile(){
+
+        readFile readFile = new readFile();
+        FileNotFoundException exception = assertThrows(FileNotFoundException.class, () -> { readFile.getInstructions("invalidffile.txt");});
+        assertEquals("File not found", exception.getMessage());
 
     }
+
+
 }
