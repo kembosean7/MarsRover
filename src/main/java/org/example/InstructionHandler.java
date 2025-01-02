@@ -34,6 +34,13 @@ public class InstructionHandler {
             x -= distance * Math.sin(Math.toRadians(orientation));
             y -= x += distance * Math.cos(Math.toRadians(orientation));
         }
+        else{
+            System.out.printf("I've encountered an instruction I don't understand, aborting (instruction %d)%n", i);
+        }
 
+        System.out.printf("Moving %.2f meters %s (instruction %d)%n", distance, moveCommand[moveCommand.length - 1].toLowerCase(), i);
+        System.out.printf("I'm at (%.2f, %.2f) facing %.2f degrees%n", x, y, orientation);
+
+        return new double[] {x,y};
     }
 }
