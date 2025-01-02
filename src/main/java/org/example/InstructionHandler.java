@@ -21,6 +21,9 @@ public class InstructionHandler {
                 double[] result= moveCommand(i,orientation,instruction,x,y);
                 x = result[0];
                 y = result[1];
+            } else if (instruction.toLowerCase().startsWith("turn")){
+                orientation = turnCommand(i,orientation,instruction,x,y);
+
             }
         }
 
@@ -46,7 +49,7 @@ public class InstructionHandler {
 
         } else if(moveCommand[moveCommand.length -1].equalsIgnoreCase("backward")) {
             x -= distance * Math.sin(Math.toRadians(orientation));
-            y -= x += distance * Math.cos(Math.toRadians(orientation));
+            y -= distance * Math.cos(Math.toRadians(orientation));
         }
         else{
             System.out.printf("I've encountered an instruction I don't understand, aborting (instruction %d)%n", i+1);
@@ -75,14 +78,14 @@ public class InstructionHandler {
             orientation = (orientation + angle) % 360;
 
         } else if (turnDirection.equalsIgnoreCase("counterclockwise")) {
-            orientation = (orientation + angle) % 360;
+            orientation = (orientation - angle) % 360;
 
         }else {
             System.out.printf("I've encountered an instruction I don't understand, aborting (instruction %d)%n", i+1);
             System.exit(0);
         }
 
-        System.out.printf("Turning %.2f degrees %s (instruction %d)%n", angle, turnDirection, i);
+        System.out.printf("Turning %.2f degrees %s (instruction %d)%n", angle, turnDirection, i+1);
         System.out.printf("I'm at (%.2f, %.2f) facing %.2f degrees%n", x, y, orientation);
         return orientation;
     }
