@@ -68,5 +68,14 @@ public class InstructionHandler {
             System.out.printf("I've encountered an instruction I don't understand, aborting (instruction %d)%n", i+1);
             System.exit(0);
         }
+
+        String turnDirection = turnCommand[turnCommand.length - 1];
+        if(turnDirection.equalsIgnoreCase("clockwise")){
+            orientation = (orientation + angle) % 360;
+
+        } else if (turnDirection.equalsIgnoreCase("counterclockwise")) {
+            orientation = (orientation + angle) % 360;
+
+
     }
 }
