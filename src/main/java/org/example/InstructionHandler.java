@@ -60,6 +60,14 @@ public class InstructionHandler {
             System.exit(0);
         }
 
+        if(Math.abs(x) < 0.01){
+            x = 0.00;
+        }
+        if(Math.abs(y) < 0.01){
+            y = 0.00;
+        }
+
+
         System.out.printf("Moving %.2f meters %s (instruction %d)%n", distance, moveCommand[moveCommand.length - 1].toLowerCase(), i+1);
         System.out.printf("I'm at (%.2f, %.2f) facing %.2f degrees%n", x, y, orientation);
 
