@@ -24,6 +24,10 @@ public class InstructionHandler {
             } else if (instruction.toLowerCase().startsWith("turn")){
                 orientation = turnCommand(i,orientation,instruction,x,y);
 
+            }else{
+                System.out.printf("I've encountered an instruction I don't understand, aborting (instruction %d)%n", i+1);
+                System.exit(0);
+
             }
         }
 

@@ -43,7 +43,7 @@ public class testMarsRover {
                 "Turn 90 degrees clockwise",
                 "Move 5 meters forward",
                 "Turn 90 degrees counterclockwise",
-                "Move 10 meters forward   "
+                "Move 10 meters forward"
         );
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
@@ -63,7 +63,32 @@ public class testMarsRover {
                 "I'm at (5.00, 20.00) facing 0.00 degrees\r\n";
         assertEquals(expectedOutput,outContent.toString());
 
+    }
+    @Test
+    public void testInvalidAngleInstruction(){
 
+        List<String> data = Arrays.asList(
+                "Move 10 meters forward",
+                "Turn 90 degrees clockwise",
+                "Move 5 meters forward",
+                "Turn Earth 90 degrees counterclockwise",
+                "Move 10 meters forward"
+        );
+
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        InstructionHandler.instructionMovements(data);
+        String expectedOutput = "I'm at (0.00, 0.00) facing 0.00 degrees\r\n" +
+                "Moving 10.00 meters forward (instruction 1.00)\r\n" +
+                "I'm at (0.00, 10.00) facing 0.00 degrees\r\n" +
+                "Turning 90.00 degrees clockwise (instruction 2.00)\r\n" +
+                "I'm at (0.00, 10.00) facing 90.00 degrees\r\n" +
+                "Moving 5.00 meters forward (instruction 3.00)\r\n" +
+                "I'm at (5.00, 10.00) facing 90.00 degrees\r\n" +
+                "I've encountered an instruction I don't understand, aborting (instruction 4.00)\r\n";
+
+        assertEquals(expectedOutput,outContent.toString());
     }
 
 
